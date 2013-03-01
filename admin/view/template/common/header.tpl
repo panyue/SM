@@ -61,7 +61,7 @@ $(document).ready(function(){
     <?php } ?>
   </div>
   <?php if ($logged) { ?>
-  <div id="menu" >
+  <div id="menu" style = "display:none;">
     <ul class="left" style="display: none;">
       <li id="dashboard" ><a href="<?php echo $home; ?>" class="top"><?php echo $text_dashboard; ?></a></li>
       <li id="catalog"><a class="top"><?php echo $text_catalog; ?></a>
