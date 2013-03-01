@@ -237,6 +237,17 @@ class ControllerCatalogProduct extends Controller {
 			$filter_model = null;
 		}
 		
+		if (isset($this->request->get['filter_length'])) {
+			$filter_length = $this->request->get['filter_length'];
+		} else {
+			$filter_length = null;
+		}
+		if (isset($this->request->get['filter_weight'])) {
+			$filter_weight = $this->request->get['filter_weight'];
+		} else {
+			$filter_weight = null;
+		}
+		
 		if (isset($this->request->get['filter_price'])) {
 			$filter_price = $this->request->get['filter_price'];
 		} else {
@@ -330,6 +341,9 @@ class ControllerCatalogProduct extends Controller {
 		$data = array(
 			'filter_name'	  => $filter_name, 
 			'filter_model'	  => $filter_model,
+			'filter_weight'	  => $filter_weight,
+			'filter_length'	  => $filter_length,
+			
 			'filter_price'	  => $filter_price,
 			'filter_quantity' => $filter_quantity,
 			'filter_status'   => $filter_status,
@@ -376,6 +390,8 @@ class ControllerCatalogProduct extends Controller {
 				'name'       => $result['name'],
 				'model'      => $result['model'],
 				'price'      => $result['price'],
+				'length'     => $result['length'],
+				'weight'     => $result['weight'],
 				'special'    => $special,
 				'image'      => $image,
 				'quantity'   => $result['quantity'],
@@ -394,7 +410,10 @@ class ControllerCatalogProduct extends Controller {
 			
 		$this->data['column_image'] = $this->language->get('column_image');		
 		$this->data['column_name'] = $this->language->get('column_name');		
-		$this->data['column_model'] = $this->language->get('column_model');		
+		$this->data['column_model'] = $this->language->get('column_model');	
+		$this->data['column_weight'] = $this->language->get('column_weight');		
+		$this->data['column_length'] = $this->language->get('column_length');		
+		
 		$this->data['column_price'] = $this->language->get('column_price');		
 		$this->data['column_quantity'] = $this->language->get('column_quantity');		
 		$this->data['column_status'] = $this->language->get('column_status');		
@@ -429,6 +448,14 @@ class ControllerCatalogProduct extends Controller {
 		
 		if (isset($this->request->get['filter_model'])) {
 			$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['filter_length'])) {
+			$url .= '&filter_length=' . urlencode(html_entity_decode($this->request->get['filter_length'], ENT_QUOTES, 'UTF-8'));
+		}
+		
+		if (isset($this->request->get['filter_weight'])) {
+			$url .= '&filter_weight=' . urlencode(html_entity_decode($this->request->get['filter_weight'], ENT_QUOTES, 'UTF-8'));
 		}
 		
 		if (isset($this->request->get['filter_price'])) {
@@ -501,6 +528,8 @@ class ControllerCatalogProduct extends Controller {
 	
 		$this->data['filter_name'] = $filter_name;
 		$this->data['filter_model'] = $filter_model;
+		$this->data['filter_length'] = $filter_length;
+		$this->data['filter_weight'] = $filter_weight;
 		$this->data['filter_price'] = $filter_price;
 		$this->data['filter_quantity'] = $filter_quantity;
 		$this->data['filter_status'] = $filter_status;
