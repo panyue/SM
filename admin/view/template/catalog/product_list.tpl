@@ -48,7 +48,7 @@
                 <?php } else { ?>
                 <a href="<?php echo $sort_price; ?>"><?php echo $column_price; ?></a>
                 <?php } ?></td>
-              <td class="right"><?php if ($sort == 'p.quantity') { ?>
+              <td style = "display:none" class="right"><?php if ($sort == 'p.quantity') { ?>
                 <a href="<?php echo $sort_quantity; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_quantity; ?></a>
                 <?php } else { ?>
                 <a href="<?php echo $sort_quantity; ?>"><?php echo $column_quantity; ?></a>
@@ -70,7 +70,7 @@
               <td><input type="text" name="filter_length" value="<?php echo $filter_length; ?>" /></td>
               <td><input type="text" name="filter_weight" value="<?php echo $filter_weight; ?>" /></td>
               <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" size="8"/></td>
-              <td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" style="text-align: right;" /></td>
+              <td align="right" style = "display:none;"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" style="text-align: right;" /></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -105,7 +105,7 @@
                 <?php } else { ?>
                 <?php echo $product['price']; ?>
                 <?php } ?></td>
-              <td class="right"><?php if ($product['quantity'] <= 0) { ?>
+              <td style = "display:none;" class="right"><?php if ($product['quantity'] <= 0) { ?>
                 <span style="color: #FF0000;"><?php echo $product['quantity']; ?></span>
                 <?php } elseif ($product['quantity'] <= 5) { ?>
                 <span style="color: #FFA500;"><?php echo $product['quantity']; ?></span>
